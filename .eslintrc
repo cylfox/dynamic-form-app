@@ -21,6 +21,6 @@
     "sourceType": "module"
   },
   "plugins": ["react", "html"],
-  "rules": {},
+  "rules": { "@typescript-eslint/consistent-type-assertions": "off" },
   "ignorePatterns": [".eslintrc"]
 }
