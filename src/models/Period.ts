@@ -1,4 +1,5 @@
 import { dateToHTMLDatePickerFormat } from '../utils/Date'
+import { type StringType } from './MappedTypes'
 
 // domain model
 export interface Period {
@@ -8,23 +9,15 @@ export interface Period {
 }
 
 // form model
-export interface PeriodForm {
-  start: string
-  end: string
-  increment?: number
-}
+export type PeriodForm = StringType<Period>
 
 // form validation errors
-export interface PeriodError {
-  start: string
-  end: string
-  increment: string
-}
+export type PeriodError = StringType<Period>
 
 export const mapDomainToFormModel = (period: Period): PeriodForm => {
   return {
     start: dateToHTMLDatePickerFormat(period.start),
     end: dateToHTMLDatePickerFormat(period.end),
-    increment: period.increment,
+    increment: period.increment?.toString(),
   }
 }

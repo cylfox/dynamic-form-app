@@ -43,6 +43,7 @@
 
 div > label {
   display: grid;
+  font-size: small;
 }
 
 .period {

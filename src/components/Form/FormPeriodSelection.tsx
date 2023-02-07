@@ -19,9 +19,14 @@ const validate = (values: PeriodForm): PeriodError => {
     errors.end = 'Required'
   }
 
-  if (values.increment === undefined || values.increment === 0) {
+  const increment =
+    typeof values.increment === 'string'
+      ? parseFloat(values.increment)
+      : undefined
+
+  if (increment === undefined || Number.isNaN(increment)) {
     errors.increment = 'Required'
-  } else if (Math.abs(values.increment).toString().length < 2) {
+  } else if (Math.abs(increment).toString().length < 2) {
     errors.increment = 'Must be 2 characters or more'
   }
 
@@ -32,7 +37,7 @@ const FormPeriodSelection = (): JSX.Element => {
   const [initialPeriod, setInitialPeriod] = useState<PeriodForm>({
     start: '',
     end: '',
-    increment: 0,
+    increment: '',
   })
 
   useEffect(() => {
