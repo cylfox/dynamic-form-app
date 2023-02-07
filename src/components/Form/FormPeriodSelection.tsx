@@ -11,15 +11,15 @@ import {
 const validate = (values: PeriodForm): PeriodError => {
   const errors: PeriodError = {} as PeriodError
 
-  if (values.start === undefined) {
+  if (values.start === '') {
     errors.start = 'Required'
   }
 
-  if (values.end === undefined) {
+  if (values.end === '') {
     errors.end = 'Required'
   }
 
-  if (values.increment === undefined) {
+  if (values.increment === undefined || values.increment === 0) {
     errors.increment = 'Required'
   } else if (Math.abs(values.increment).toString().length < 2) {
     errors.increment = 'Must be 2 characters or more'
