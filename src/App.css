@@ -40,3 +40,16 @@
 .read-the-docs {
   color: #888;
 }
+
+div > label {
+  display: grid;
+}
+
+.period {
+  display: flex;
+  align-items: center;
+}
+
+.period > * {
+  padding: 0.5rem;
+}
